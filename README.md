@@ -1,5 +1,5 @@
 # Welcome to CODEPATH!
-![CodePath Logo](https://brandfetch.com/codepath.com?view=library&library=default&collection=logos&asset=idqJYfC3SG&utm_source=https%253A%252F%252Fbrandfetch.com%252Fcodepath.com&utm_medium=copyAction&utm_campaign=brandPageReferral)
+![CodePath Logo](idqJYfC3SG_logos.png)
 
 <p align="left"><br>This repository contains all the code I write during my CodePath classes, specifically for TIP 102 and WEB 101.<br><br>Technologies I use:</p>
 
