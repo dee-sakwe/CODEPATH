@@ -1,0 +1,190 @@
+'''
+Problem 7: Diagonal
+Write a function diagonal_sum() that accepts a 2D n x n 
+matrix grid and returns the sum of the matrix diagonals. 
+Only include the sum of all the elements on the primary diagonal 
+and all the elements in the secondary diagonal that are not part of the primary diagonal.
+
+The primary diagonal is all cells in the matrix along a line 
+drawn from the top-left cell in the matrix to the bottom-right cell. 
+The secondary diagonal is all cells in the matrix along a line 
+drawn from the top-right cell in the matrix to the bottom-left cell.
+'''
+print(f"\nQuestion #7")
+def diagonal_sum(grid):
+    # Managed to do it in O(n) time and O(1) space, yay!
+    # n being number of rows, obvs
+
+    # keep track of our sum with total initialized to 0
+    total = 0
+    # number of rows so we don't keep calling len()
+    # minor optimization, but worth it still
+    n = len(grid)
+    # j counter starting from the last index of rows and counting down
+    j = n - 1
+
+    # no need to loop if theres only a 1 X 1 matrix
+    # dunno if this is strictly necessary tho
+    # apparently not lol
+    '''
+    if n == 1:
+        return grid[0][0]
+    '''
+
+    # for the total number of rows:
+    for i in range(n):
+        # elements on the leading diagonal will have the same row number and 
+        # column number    
+        total += grid[i][i]
+
+        # We don't want to count the middle index in an odd n matrix
+        # so we check that i != j
+        if i != j:
+            total += grid[i][j]
+
+        # decrement j after each run of the loop   
+        j -= 1
+
+    return total
+
+    '''
+    # first iteration works, but I could probably do it
+    # in O(1) extra space (currently O(n) where n is the num of rows)
+    total = 0
+    seen = set()
+    n = len(grid)
+    j = n - 1
+
+    if n == 1:
+        return grid[0][0]
+
+    for i in range(n):    
+        total += grid[i][i]
+        seen.add((i, i))
+        if (i, j) not in seen:
+            total += grid[i][j]
+            
+        j -= 1
+
+    return total
+    '''
+
+'''
+Example 1 input matrix with primary and secondary diagonals labelled
+
+Example Usage
+'''
+
+grid = [
+	[1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(diagonal_sum(grid))
+
+grid = [
+	[1, 1, 1, 1],
+    [1, 1, 1, 1],
+	[1, 1, 1, 1],
+    [1, 1, 1, 1]
+]
+print(diagonal_sum(grid))
+
+grid = [
+	[5]
+]
+print(diagonal_sum(grid))
+'''
+Example Output:
+
+25
+8
+5
+'''
+
+print(f"\nQuestion #8")
+'''
+QUESTION #8
+Batman has a bomb to defuse, and his time is running out! 
+His butler, Alfred, is on the phone providing him with a circular array code of length n and key k.
+
+To decrypt the code, Batman must replace every number. All the numbers are replaced simultaneously.
+
+If k > 0, replace the ith number with the sum of the next k numbers.
+If k < 0, replace the ith number with the sum of the previous k numbers.
+If k == 0, replace the ith number with 0.
+As code is circular, the next element of code[n-1] is code[0], and the previous element of code[0] is code[n-1].
+
+Given the circular array code and an integer key k, write a function decrypt() that returns the decrypted code to defuse the bomb!
+'''
+
+def defuse(code, k):
+    # for easy access
+    n = len(code)
+    # initialize result array since all the work has to be done simultaneoulsy
+    result = [0] * n
+
+    if k > 0:
+        # for all chars in the array
+        for i in range(n):
+            # maintain a total count that is appended to our result array
+            # at position i
+            total = 0
+            # tricky part! Thank you @copilot
+            # for the number of chars we are supposed to add
+            # e.g if k is 3, we want to add the first, second, and third numbers after code[i]
+            for j in range(1, k+1):
+                # use the modulo operator to simulate the circular array
+                # e.g n = 4, i = 0 , j = 1; idx would be (0 + 1) % 4
+                # which would come out to 1
+                idx = (i + j) % n
+                # so we would add the int at code[idx] to our total
+                total += code[idx]
+
+            # add the total sum to result at the index i
+            result[i] = total 
+    elif k < 0:
+        for i in range(n):
+            # similar to the case where k is positive
+            total = 0
+            # had to come up with this by myself, tho lmao
+            # really tough
+            for j in range(1, abs(k) + 1 ):  # assume k is positive so we know what to add
+                # e.g n = 7, k = 3, i = 0, j = [1, 2, 3]
+                # i tried to do this by "adding" another array of size n to our input array
+                # this allows us to go back without using negative indices, assuming k < n
+                # idx = ((0 + 7) - j = 1) % 7
+                # idx = (7 - 1) % 7 => 6;
+                idx = (i + n - j) % n
+                # We then add code[6] to total 
+                total += code[idx]
+
+            result[i] = total
+    # return result. will return [0] * n if k == 0
+    # actually just make code = result and return that
+    code = result
+    return code
+
+
+
+# Example Usage:
+
+code = [5, 7, 1, 4]
+k = 3
+print(defuse(code, k))
+
+code = [1, 2, 3, 4]
+k = 0
+print(defuse(code, k))
+
+code = [2, 4, 9, 3]
+k = -2
+print(defuse(code, k))
+
+'''
+Example Output:
+
+[12, 10, 16, 13]
+[0, 0, 0, 0]
+[12, 5, 6, 13]
+'''
