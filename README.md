@@ -1,5 +1,5 @@
 # Welcome to CODEPATH!
-![CodePath Logo](idqJYfC3SG_logos.png)
+![CodePath Logo](Images/idqJYfC3SG_logos.png)
 
 <p align="left"><br>This repository contains all the code I write during my CodePath classes, specifically for TIP 102 and WEB 101.<br><br>Technologies I use:</p>
 
