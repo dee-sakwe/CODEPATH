@@ -1,4 +1,108 @@
 '''
+Problem 7: Diagonal
+Write a function diagonal_sum() that accepts a 2D n x n 
+matrix grid and returns the sum of the matrix diagonals. 
+Only include the sum of all the elements on the primary diagonal 
+and all the elements in the secondary diagonal that are not part of the primary diagonal.
+
+The primary diagonal is all cells in the matrix along a line 
+drawn from the top-left cell in the matrix to the bottom-right cell. 
+The secondary diagonal is all cells in the matrix along a line 
+drawn from the top-right cell in the matrix to the bottom-left cell.
+'''
+print(f"\nQuestion #7")
+def diagonal_sum(grid):
+    # Managed to do it in O(n) time and O(1) space, yay!
+
+    # keep track of our sum with total initialized to 0
+    total = 0
+    # number of rows so we don't keep calling len()
+    # minor optimization, but worth it still
+    n = len(grid)
+    # j counter starting from the last index of rows and counting down
+    j = n - 1
+
+    # no need to loop if theres only a 1 X 1 matrix
+    # dunno if this is strictly necessary tho
+    # apparently not lol
+    '''
+    if n == 1:
+        return grid[0][0]
+    '''
+
+    # for the total number of rows:
+    for i in range(n):
+        # elements on the leading diagonal will have the same row number and 
+        # column number    
+        total += grid[i][i]
+
+        # We don't want to count the middle index in an odd n matrix
+        # so we check that i != j
+        if i != j:
+            total += grid[i][j]
+
+        # decrement j after each run of the loop   
+        j -= 1
+
+    return total
+
+    '''
+    # first iteration works, but I could probably do it
+    # in O(1) extra space (currently O(n) where n is the num of rows)
+    total = 0
+    seen = set()
+    n = len(grid)
+    j = n - 1
+
+    if n == 1:
+        return grid[0][0]
+
+    for i in range(n):    
+        total += grid[i][i]
+        seen.add((i, i))
+        if (i, j) not in seen:
+            total += grid[i][j]
+            
+        j -= 1
+
+    return total
+    '''
+
+'''
+Example 1 input matrix with primary and secondary diagonals labelled
+
+Example Usage
+'''
+
+grid = [
+	[1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(diagonal_sum(grid))
+
+grid = [
+	[1, 1, 1, 1],
+    [1, 1, 1, 1],
+	[1, 1, 1, 1],
+    [1, 1, 1, 1]
+]
+print(diagonal_sum(grid))
+
+grid = [
+	[5]
+]
+print(diagonal_sum(grid))
+'''
+Example Output:
+
+25
+8
+5
+'''
+
+print(f"\nQuestion #8")
+'''
 QUESTION #8
 Batman has a bomb to defuse, and his time is running out! 
 His butler, Alfred, is on the phone providing him with a circular array code of length n and key k.
@@ -50,7 +154,7 @@ def defuse(code, k):
                 # this allows us to go back without using negative indices, assuming k < n
                 # idx = ((0 + 7) - j = 1) % 7
                 # idx = (7 - 1) % 7 => 6;
-                idx = ((i + n) - j) % n
+                idx = (i + n - j) % n
                 # We then add code[6] to total 
                 total += code[idx]
 
