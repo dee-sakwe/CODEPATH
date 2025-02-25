@@ -1,3 +1,99 @@
+print("\nQuestion #6")
+'''
+Problem 6: Smaller Than
+Write a function smaller_than_current that accepts a list of integers nums 
+and, for each element in the list nums[i], determines the number of other elements in the array that are smaller than it. 
+More formally, for each nums[i] count the number of valid j's such that j != i and nums[j] < nums[i].
+
+Return the answer as a list.
+'''
+
+def smaller_than_current(nums: list) -> list:
+    # VER 3: Uses sorting and drops time to O(nlogn)
+
+    # Create a sorted (num, index) pair arrays from nums
+    # This allows us to know which numbers are smaller than which
+    # I thought of sorting as a possible solution, FTR
+    indexed = sorted([(num, i) for i, num in enumerate(nums)])
+
+    n = len(nums)
+    result = [0] * n
+
+    # loop through our indexed array. Since it is sorted, the index of the number
+    # will also equal the number of elements in nums that are greater than it. Very smart @copilot
+    for i, (_, original_index) in enumerate(indexed):
+        result[original_index] = i
+
+        # There are times when duplicates exist in nums. We have to account for that
+        # run a while loop and check that the number we are dealing with is not the same
+        # as the one before it
+        while i > 0 and indexed[i][0] == indexed[i - 1][0]:
+            # We replace what we originally put as the result with the value of the element before it
+            # I originally tried result[original_index] = indexed[i - 1][1]
+            result[original_index] = result[indexed[i - 1][1]]  # Copilot actually said result[original_index] = result[indexed[i - 1][1]]
+            # Spoiler: he (she? they?) was right.
+            # decrement i
+            i -= 1
+
+    return result
+
+    """
+    # VER 2
+
+    n = len(nums)
+    result = [0] * n
+
+    for i in range(n):
+        for j in range(n):
+            if i != j and nums[j] < nums[i]:
+                result[i] += 1
+
+    return result
+    """
+
+    '''
+	# looks like they are asking for the "brute-force" solution
+    # something tells me that using the circular array trick will work here
+    n = len(nums)
+    # result array of length n
+    result = [0] * n
+
+    # for every index in nums
+    for i in range(n):
+        total = 0
+        # we will be checking n - 1 elements to see if they are smaller than the current nums[i]
+        for j in range(1, n):
+            # if the other numbers are smaller
+            if nums[(i + j) % n] < nums[i]:
+                total += 1
+
+        # Update our result array at index i with the number of elements in nums greater than nums[i]
+        result[i] = total
+
+    return result  # return result array
+    # Expected O(n^2) time complexity and O(n) space, although output array isn't usually counted, so maybe O(1) space
+    '''
+
+# Example Usage:
+
+nums = [8, 1, 2, 2, 3]
+print(smaller_than_current(nums))
+
+nums = [6, 5, 4, 8]
+print(smaller_than_current(nums))
+
+nums = [7, 7, 7, 7]
+print(smaller_than_current(nums))
+
+# Example Output:
+
+'''
+[4, 0, 1, 1, 3]
+[2, 1, 0, 3]
+[0, 0, 0, 0]
+'''
+
+print(f"\nQuestion #7")
 '''
 Problem 7: Diagonal
 Write a function diagonal_sum() that accepts a 2D n x n 
@@ -10,8 +106,8 @@ drawn from the top-left cell in the matrix to the bottom-right cell.
 The secondary diagonal is all cells in the matrix along a line 
 drawn from the top-right cell in the matrix to the bottom-left cell.
 '''
-print(f"\nQuestion #7")
-def diagonal_sum(grid):
+
+def diagonal_sum(grid: list[list]) -> int:
     # Managed to do it in O(n) time and O(1) space, yay!
     # n being number of rows, obvs
 
@@ -118,7 +214,7 @@ As code is circular, the next element of code[n-1] is code[0], and the previous 
 Given the circular array code and an integer key k, write a function decrypt() that returns the decrypted code to defuse the bomb!
 '''
 
-def defuse(code, k):
+def defuse(code: list, k: int) -> list:
     # for easy access
     n = len(code)
     # initialize result array since all the work has to be done simultaneoulsy
