@@ -1,3 +1,63 @@
+print("\nQuestion #5")
+'''
+Problem 5: Heist
+The legendary outlaw Robin Hood is looking for the target of his next heist. 
+Write a function wealthiest_customer() that accepts an m x n 2D integer matrix accounts
+where accounts[i][j] is the amount of money the ith customer has in the jth bank. 
+Return a list [i, w] where i is the 0-based index of the wealthiest customer and w is the total wealth of the wealthiest customer.
+
+If multiple customers have the highest wealth, return the index of any customer.
+
+A customer's wealth is the amount of money they have in all their bank accounts. 
+The richest customer is the customer that has the maximum wealth.
+'''
+
+def wealthiest_customer(accounts: list[list]) -> list:
+    # initialize empty array to store the richest person
+    richest = [0, 0]
+
+    # traverse through the accounts 
+    for index, account in enumerate(accounts):
+        # Calculate the wealth of each individual
+        wealth = sum(account)
+
+        # Check if current customer is wealthier than the prev richest
+        if wealth > richest[1]:
+            richest[0], richest[1] = index, wealth
+
+    return richest # O(m * n) time complexity and O(1) space (Output array doesn't count)
+
+
+# Example Usage:
+
+accounts = [
+	[1, 2, 3],
+	[3, 2, 1]
+]
+print(wealthiest_customer(accounts))
+
+accounts = [
+	[1, 5],
+	[7, 3],
+	[3, 5]
+]
+print(wealthiest_customer(accounts))
+
+accounts = [
+	[2, 8, 7],
+	[7, 1, 3],
+	[1, 9, 5]
+]
+print(wealthiest_customer(accounts))
+
+'''
+Example Output:
+
+[0, 6]
+[1, 10]
+[0, 17]
+'''
+
 print("\nQuestion #6")
 '''
 Problem 6: Smaller Than
@@ -73,6 +133,7 @@ def smaller_than_current(nums: list) -> list:
     return result  # return result array
     # Expected O(n^2) time complexity and O(n) space, although output array isn't usually counted, so maybe O(1) space
     '''
+
 
 # Example Usage:
 
@@ -164,6 +225,7 @@ def diagonal_sum(grid: list[list]) -> int:
 
     return total
     '''
+
 
 '''
 Example 1 input matrix with primary and secondary diagonals labelled
@@ -260,7 +322,6 @@ def defuse(code: list, k: int) -> list:
     # actually just make code = result and return that
     code = result
     return code
-
 
 
 # Example Usage:
