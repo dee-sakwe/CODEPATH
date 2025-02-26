@@ -1,3 +1,54 @@
+print("\nQuestion #3")
+'''
+Problem 3: Encode
+The Riddler is planning to leave a coded message to lead Batman into a trap. 
+Write a function shuffle() that takes in a string, the Riddler's message, and encodes it using an integer array indices. 
+The message will be shuffled such that the character at the ith position in message moves to index indices[i] in the shuffled string. 
+You may assume len(message) is equal to the len(indices).
+'''
+
+def shuffle(message: str, indices: list) -> str:
+    # We assume message.length == indices.length
+    n = len(indices)
+    # initialize a pointer to keep track of a char in message and the index from indices
+    # where it will be placed in the resultant string
+    pointer = 0
+    # Use an array of size n so that we can place the chars in their correct postion
+    # we will use join() to concatenate the result and produce the output
+    result = [" "] * n
+
+    # While we have not reached the end of messages
+    while pointer < n:
+        # access both characters at index pointer to know what char to place
+        # and what index to place it at
+        char, index = message[pointer], indices[pointer]
+
+        # put the char in the correct spot in result
+        result[index] = char
+
+        # increment pointer
+        pointer += 1
+
+    return "".join(result)  # O(n) time, O(n) space, where n = message.length
+
+
+# Example Usage:
+
+message = "evil"
+indices = [3, 1, 2, 0]
+print(shuffle(message, indices))
+
+message = "findme"
+indices = [0, 1, 2, 3, 4, 5]
+print(shuffle(message, indices))
+
+'''
+Example Output:
+
+"lvie"
+"findme"
+'''
+
 print("\nQuestion #4")
 '''
 Problem 4: Good Samaritan
@@ -13,7 +64,7 @@ that returns the minimum number of boxes needed to redistribute the n packs of m
 Note that meals from the same pack can be distributed into different boxes.
 '''
 
-def minimum_boxes(meals, capacity):
+def minimum_boxes(meals: list, capacity: list) -> int:
     # total number of boxes required
     result = 0
     # how many total meals we have to share into the capacity boxes
