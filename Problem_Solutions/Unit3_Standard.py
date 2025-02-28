@@ -1,0 +1,76 @@
+# SESSION 1
+
+
+
+
+print("Question #1")
+'''
+Problem 1: Post Format Validator
+You are managing a social media platform and need to ensure that posts are properly formatted. 
+Each post must have balanced and correctly nested tags, such as () for mentions, [] for hashtags, and {} for links. 
+You are given a string representing a post's content, and your task is to determine if the tags in the post are correctly formatted.
+
+A post is considered valid if:
+
+Every opening tag has a corresponding closing tag of the same type.
+Tags are closed in the correct order.
+
+This question may be answered using a stack, which is a new data structure. 
+To learn more about stacks and how to use them in Python, 
+check out the unit cheatsheet or use a search engine or generative AI tool to conduct your own research.
+
+Initialize a stack to keep track of the opening tags as you encounter them.
+Iterate through the posts
+If it's an opening tag, push it onto the stack
+If it's a closing tag, check if the stack is not empty and whether the tag at the top of the stack is the corresponding opening tag
+If yes, pop the opening tag from the stack (we've found its match!)
+If no, the tags are not properly nested and we should return False
+After processing all characters, if the stack is empty, all tags were properly nested and we should return True. 
+If the stack is not empty, some opening tags were not closed, so return False
+'''
+
+def is_valid_post_format(posts):
+    # This is essentialy the valid parenthesis question with extra steps
+    # we want to use a stack to ensure that open pars match close par
+    # we can map close par to open par using a hashmap
+
+    match = {
+        ")": "(",
+        "}": "{",
+        "]": "["
+    }
+
+    # initialize a stack 
+    stack = []
+
+    # In one passthrough, go through our posts and add open par to the stack
+    # if we come across a close par, check that the top element on the stack is the matching
+    # open par and then pop if it is. Else we can straight return False.
+
+    for par in posts:
+        # Check that the par is an open par, and then add it to our stack
+        if par in "({[":
+            stack.append(par)
+
+        else:
+            if stack and stack[-1] == match[par]:
+                stack.pop()
+            else:
+                return False
+
+    # We can return true if our stack is empty else False
+    return not stack
+
+# Example Usage:
+
+print(is_valid_post_format("()"))
+print(is_valid_post_format("()[]{}")) 
+print(is_valid_post_format("(]"))
+
+"""
+Example Output:
+
+True
+True
+False
+"""
