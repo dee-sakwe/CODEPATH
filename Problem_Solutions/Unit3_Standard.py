@@ -74,3 +74,42 @@ True
 True
 False
 """
+
+
+print("\nQuestion #2")
+"""
+On your platform, comments on posts are displayed in the order they are received. 
+However, for a special feature, you need to reverse the order of comments before displaying them. 
+Given a queue of comments represented as a list of strings, reverse the order using a stack.
+"""
+
+def reverse_comments_queue(comments):
+    """
+    # I could use reversed to quickly get the result
+    return [x for x in reversed(comments)]  # This is not what is needed, but it's a line of code that works
+    """
+
+    # Pretty straight forward. We want to create a stack and pop from it onto an output array
+    # I'm going to assume the input queue is a stack just for speed sake
+    result = []
+
+    # do it as many times as there are comments in our queue
+    for i in range(len(comments)):
+        result.append(comments.pop())  # pop our "stack" and append to the output list
+
+    # return our result after looping. O(n) time, O(n) space
+    return result
+
+# Example Usage:
+
+print(reverse_comments_queue(["Great post!", "Love it!", "Thanks for sharing."]))
+
+print(reverse_comments_queue(["First!", "Interesting read.", "Well written."]))
+
+"""
+Example Output:
+
+['Thanks for sharing.', 'Love it!', 'Great post!']
+['Well written.', 'Interesting read.', 'First!']
+
+"""
