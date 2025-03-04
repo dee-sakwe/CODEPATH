@@ -18,13 +18,15 @@
 
         <title>Taste of Nigeria</title>
 
+        <link rel="icon" href="img/Jollof PNG.png">
+
         <link href="https://fonts.googleapis.com/css2?family=Juana&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 
         <style>
             /* General page styling */
             /* Asked Chat GPT to help generate all of this*/
         body {
-            background: linear-gradient(to bottom, #f9f9f9, #e8e8e8); /* Subtle off-white gradient */
+            background: linear-gradient(to bottom, #f9f9f9, #f3eadb); /* Subtle off-white gradient */
             color: #222; /* Dark text for readability */
             font-family: 'Raleway', sans-serif;
             padding: 20px;
@@ -44,6 +46,24 @@
             text-align: center;
         }
 
+        h1 {
+            font-family: 'Juana', serif;
+            color: #04724D;
+            text-align: center;
+            font-size: 100px;  /* Make the h1 title bigger */
+        }
+        h2 {
+            font-size: 36px;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 22px;
+        }
+
         ul {
             text-align: left; /* Left-align the text in the list */
             list-style-position: inside; /* Optional: Keeps the list bullet inside the list container */
@@ -61,10 +81,11 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s ease;
+            font-family: 'Raleway', sans-serif;
         }
 
         button:hover, .btn:hover {
-            background-color: #035c3a; /* Darker green on hover */
+            background-color: #E48D2C; /* Darker green on hover */
         }
 
         /* Accent Elements */
@@ -81,12 +102,19 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
             max-width: 900px;
+            border: 2px solid #E48D2C; /* Orange border around sections */
         }
 
         /* Left-align links */
         a {
             text-align: left;  /* Left-align the links */
             display: block;  /* Make links take up full width */
+            color: #E48D2C; /* Apply the warm gold-orange to links */
+            text-decoration: none; /* Optional: removes underline */
+        }
+
+        a:hover {
+            color: #D67A22; /* Slightly darker orange on hover */
         }
 
         </style>
@@ -108,7 +136,12 @@
         - [ ] Project 4 (REQUIRED FEATURE) 
         - [ ] Any time after
         -->
-        <img id="header-img" src="img/Jollof PNG.png" alt="Cookout Header Image" style="width: 50px; height: auto;"/> 
+
+        <!-- The following line of code is supposed to be for the header image. I'll reactivate it later, but I think the website looks cleaner without it -->
+         
+        <!-- <img id="header-img" src="img/Jollof PNG.png" alt="Cookout Header Image" style="width: 50px; height: auto;"/> 
+        -->
+
         <h1>Taste of Nigeria</h1>
         <h3>Bring your tastebuds to life!</h3>
         <button type="button">Buy tickets</button>
@@ -136,10 +169,10 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         allowfullscreen></iframe>
 
-        <p>Join us for a vibrant Nigerian Cuisine Cookout, a celebration of rich flavors, culture, and community! This event brings together food lovers to experience authentic Nigerian dishes, from jollof rice to suya, all freshly prepared by talented cooks. Whether you're Nigerian, a fan of African cuisine, or just curious to try something new, this cookout is for you. Come hungry, connect with great people, and enjoy an unforgettable taste of Nigeria!</p>
+        <p><span class="highlight">Join us for a vibrant Nigerian Cuisine Cookout</span>, a celebration of rich flavors, culture, and community! This event brings together food lovers to experience authentic Nigerian dishes, from jollof rice to suya, all freshly prepared by talented cooks. Whether you're Nigerian, a fan of African cuisine, or just curious to try something new, this cookout is for you. Come hungry, connect with great people, and enjoy an unforgettable taste of Nigeria!</p>
 
         <h3>What to Expect</h3>
-        <h4>Great food, even greater people</h4>
+        <h4><span class="highlight"> Great food, even greater people</span></h4>
         <ul>
             <li> <b>A culinary journey to Naija:</b><i> From smoky suya to fluffy moi moi, taste the best of Nigeria in one place.</i></li>
             <li> <b>Jollof Wars:</b><i> Debate over the best jollof while stuffing your face with deliciousness.</i></li>
@@ -160,13 +193,13 @@
         <h2>Event Schedule</h2>
 
         <img alt="Happy people at the cookout!" src="./img/istockphoto-1393304538-612x612.jpg" />
-        <h3>Socialize</h3>
+        <h3><span class="highlight"> Socialize</span></h3>
             
         <img alt="Beautifully diverse group of people in Nigerian attire" src="img/pexels-ilabappa-20434733.jpg" style="width: 550px; height: auto;"/>
 
         <p>Make friends and discuss Nigerian culture.</p>
 
-        <h3>Chop life!</h3>
+        <h3><span class="highlight">Chop Life!</span></h3>
         <p>Immerse yourself in our spread of expertly-curated, deliciously-prepared Nigerian food</p>
 
         <img alt="Delicious plate of rice" src="./img/side-view-chicken-kebab-with-grilled-hot-green-pepper-tomato-pickled-cabbage-rice-pita-min.jpg" style="width: 550px;"/>
@@ -187,10 +220,24 @@
         <h2>Links</h2>
 
         <!-- This <a> block is one link.  Copy and paste all 6 lines to create another link. -->
-        <a class="block" href="https://www.codepath.org">
+        <a class="block" href="https://en.wikipedia.org/wiki/Nigerian_cuisine">
             <article>
-                <h3 style="text-align: left;">Link title</h3>
-                <p>Link description</p>
+                <h3 style="text-align: left;">Our Food</h3>
+                <p>Check out this Wikipedia article about Nigerian cuisine.</p>
+            </article>
+        </a>
+
+        <a class="block" href="https://www.reddit.com/r/Nigeria/">
+            <article>
+                <h3 style="text-align: left;">Chat on Reddit</h3>
+                <p>Connect with other Naija-lovers on r/Nigeria</p>
+            </article>
+        </a>
+
+        <a class="block" href="https://sisijemimah.com/category/nigerian-food-2/">
+            <article>
+                <h3 style="text-align: left;">Try making the dishes</h3>
+                <p>Click here to find high-quality recipes for most of the food on our menu</p>
             </article>
         </a>
             
