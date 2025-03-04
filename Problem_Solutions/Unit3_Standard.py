@@ -223,3 +223,62 @@ Example Output:
 [0, 1, 9, 16, 100]
 [4, 9, 9, 49, 121]
 """
+
+
+print("\nQuestion #5")
+"""
+Problem 5: Content Cleaner
+You want to make sure your posts are clean and professional. 
+Given a string post of lowercase and uppercase English letters, 
+you want to remove any pairs of adjacent characters where one is the lowercase version of a letter 
+and the other is the uppercase version of the same letter. 
+Keep removing such pairs until the post is clean.
+
+A clean post does not have two adjacent characters post[i] and post[i + 1] where:
+
+post[i] is a lowercase letter and post[i + 1] is the same letter in uppercase or vice-versa.
+Return the clean post.
+
+Note that an empty string is also considered clean.
+"""
+
+def clean_post(post: str) -> str:
+    # This problem can be solved using a stack
+    stack = []
+
+    # We iterate through post. We check if the current char is the same as the top
+    # of our stack. If so, we pop our stack, else we add the char to the top of the stack
+    for char in post:
+        # check that stack is non-empty and that the current char is the same as the
+        # char on top of stack
+        if stack and stack[-1].lower() == char.lower():
+            # check that char and stack[-1] are opposites in terms of case
+            if (char.islower() and stack[-1].isupper()) or (char.isupper() and stack[-1].islower()):
+                # pop the top character off of stack
+                stack.pop()
+            # else they are both lowercase and there's no need to remove them
+            else:
+                # add the char to the top of the stack
+                stack.append(char)
+
+        # add char to our stack 
+        else:
+            stack.append(char)
+
+    # join the remnants of the stack and return the resultant string
+    return "".join(stack)  # O(n) time, O(n) space (stack data structure)
+
+# Example Usage:
+
+print(clean_post("poOost")) 
+print(clean_post("abBAcC")) 
+print(clean_post("s"))
+print(clean_post("aAAA posttT")) 
+
+""" 
+Example Output:
+
+post
+
+s
+"""
