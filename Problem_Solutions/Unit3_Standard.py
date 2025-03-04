@@ -335,3 +335,52 @@ Example Output:
 tsooB ruoy tnemegegna htiw eseht spit
 kcehC tuo ym tseval golv
 """
+
+
+print("\nQuestion #7")
+"""
+Problem 7: Post Compare
+You often draft your posts and edit them before publishing. 
+Given two draft strings draft1 and draft2, 
+return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+
+Note that after backspacing an empty text, the text will remain empty.
+"""
+
+def post_compare(draft1: str, draft2: str) -> bool:
+    # helper function to "backspace" chars when we encounter a hashtag
+    def backspace(draft: str) -> str:
+        # start with an empty stack
+        stack = []
+
+        # Iterate through draft
+        for char in draft:
+            # If there's a character in our stack and the next char is a hashtag
+            # remove the char at the top of the stack
+            if char == "#":
+                if stack: # Only pop when there's a char in stack
+                    stack.pop()
+
+            # Else we add the char to our stack
+            else:
+                stack.append(char)
+
+        # we return a joined version of our stack
+        return "".join(stack)
+
+    # Compare both drafts after we've cleaned them up
+    return backspace(draft1) == backspace(draft2)  # Ideally O(n) time. O(n) space because of the stack in backspace()
+
+# Example Usage:
+
+print(post_compare("ab#c", "ad#c"))
+print(post_compare("ab##", "c#d#")) 
+print(post_compare("a#c", "b")) 
+
+""" 
+Example Output:
+
+True
+True
+False
+"""
