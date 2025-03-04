@@ -1,0 +1,9 @@
+{
+    // Thank you copilot. I'll add more stuff to this file later if I need to
+    // This is a single-line comment
+    "setting1": "value1",
+    
+    /* This is a
+         multi-line comment */
+    "setting2": "value2"
+}

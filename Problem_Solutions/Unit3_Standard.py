@@ -113,3 +113,55 @@ Example Output:
 ['Well written.', 'Interesting read.', 'First!']
 
 """
+
+
+print("\nQuestion #3")
+"""
+Problem 3: Check Symmetry in Post Titles
+As part of a new feature on your social media platform, 
+you want to highlight post titles that are symmetrical,
+meaning they read the same forwards and backwards when ignoring spaces, punctuation, and case. 
+Given a post title as a string, use a new algorithmic technique 
+the two-pointer method to determine if the title is symmetrical.
+"""
+
+def is_symmetrical_title(title: str) -> bool:
+    n = len(title)
+    # initialize two pointers
+    left = 0
+    right = len(title) - 1
+
+    # bring our pointers towards each other
+    while left <= right:
+        # move left to the right if we come across a space char
+        while left <= right and not title[left].isalnum():
+            left += 1
+        # move right to the left if we come across a space char
+        while left <= right and not title[right].isalnum():
+            right -= 1
+
+        # return False if the chars don't match
+        if title[left].lower() != title[right].lower():
+            return False
+        
+        # increment left and decrement right if they do match
+        left += 1
+        right -= 1
+
+    # return True if the loop finishes
+    return True  # O(n) time, O(1) space
+
+
+# Example Usage:
+
+print(is_symmetrical_title("A Santa at NASA"))
+print(is_symmetrical_title("Social Media"))
+print(is_symmetrical_title("W   hatsapp D a v i d   divadPPastah w   "))
+
+""" 
+Example Output:
+
+True
+False
+True
+"""
