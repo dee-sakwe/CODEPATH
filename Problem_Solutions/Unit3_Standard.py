@@ -140,6 +140,9 @@ def is_symmetrical_title(title: str) -> bool:
         while left <= right and not title[right].isalnum():
             right -= 1
 
+        if left > right:
+            break
+
         # return False if the chars don't match
         if title[left].lower() != title[right].lower():
             return False
@@ -164,4 +167,59 @@ Example Output:
 True
 False
 True
+"""
+
+
+print("\nQuestion #4")
+"""
+Problem 4: Engagement Boost
+You track your daily engagement rates as a list of integers, sorted in non-decreasing order. 
+To analyze the impact of certain strategies, you decide to square each engagement rate 
+and then sort the results in non-decreasing order.
+
+Given an integer array engagements sorted in non-decreasing order, 
+return an array of the squares of each number sorted in non-decreasing order.
+"""
+
+def engagement_boost(engagements: list) -> list:
+    n = len(engagements)
+    # initialize an empty array to store all squared engagements
+    result = [0] * n
+    # two pointers technique
+    left = 0
+    right = len(engagements) - 1
+    pos = n - 1
+
+
+    while left <= right:  # While left has not surpassed right
+        # We compare the squares of the extremes. They will produce the largest squares
+        square_left, square_right = engagements[left] ** 2, engagements[right] ** 2
+        if square_left >= square_right:
+            # if the square of the num at the left index is greater
+            # add that to our result array and increment left
+            result[pos] = square_left
+            left += 1
+            pos -= 1
+        else:
+            # else append the square of the num at the right index
+            # and decrement right
+            result[pos] = square_right
+            right -= 1
+            pos -= 1
+
+        
+    # return the reversed array
+    return result # O(n) time, O(1) space (Don't count output array)
+
+
+# Example Usage:
+
+print(engagement_boost([-4, -1, 0, 3, 10]))
+print(engagement_boost([-7, -3, 2, 3, 11]))
+
+""" 
+Example Output:
+
+[0, 1, 9, 16, 100]
+[4, 9, 9, 49, 121]
 """
