@@ -17,138 +17,72 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Taste of Nigeria</title>
+        <link rel="stylesheet" href="styles.css">
 
         <link rel="icon" href="img/Jollof PNG.png">
 
         <link href="https://fonts.googleapis.com/css2?family=Juana&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 
-        <style>
-            /* General page styling */
-            /* Asked Chat GPT to help generate all of this*/
-        body {
-            background: linear-gradient(to bottom, #f9f9f9, #f3eadb); /* Subtle off-white gradient */
-            color: #222; /* Dark text for readability */
-            font-family: 'Raleway', sans-serif;
-            padding: 20px;
-            text-align: center; /* Centers all text inside the body */
-        }
-
-        img {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;  /* Ensures the image is responsive */
-        }
-
-        /* Header Styling */
-        h1, h2, h3, h4 {
-            font-family: 'Juana', serif; 
-            color: #04724D; /* Deep green for Nigerian vibe */
-            text-align: center;
-        }
-
-        h1 {
-            font-family: 'Juana', serif;
-            color: #04724D;
-            text-align: center;
-            font-size: 100px;  /* Make the h1 title bigger */
-        }
-        h2 {
-            font-size: 36px;
-        }
-
-        h3 {
-            font-size: 28px;
-        }
-
-        h4 {
-            font-size: 22px;
-        }
-
-        ul {
-            text-align: left; /* Left-align the text in the list */
-            list-style-position: inside; /* Optional: Keeps the list bullet inside the list container */
-            padding-left: 20px; /* Adds some padding to make it visually appealing */
-        }
+        <!-- Confetti for when RSVP numbers increase -->
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 
-        /* Navigation or Buttons */
-        button, .btn {
-            background-color: #04724D; /* Nigerian Green */
-            color: white;
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-family: 'Raleway', sans-serif;
-        }
-
-        button:hover, .btn:hover {
-            background-color: #E48D2C; /* Darker green on hover */
-        }
-
-        /* Accent Elements */
-        .highlight {
-            color: #E48D2C; /* Warm complementary color */
-            font-weight: bold;
-        }
-
-        /* Sections */
-        section {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 900px;
-            border: 2px solid #E48D2C; /* Orange border around sections */
-        }
-
-        /* Left-align links */
-        a {
-            text-align: left;  /* Left-align the links */
-            display: block;  /* Make links take up full width */
-            color: #E48D2C; /* Apply the warm gold-orange to links */
-            text-decoration: none; /* Optional: removes underline */
-        }
-
-        a:hover {
-            color: #D67A22; /* Slightly darker orange on hover */
-        }
-
-        </style>
     </head>
     
     <body>
     
-        <!-- navbar [PLACEHOLDER] [ADDED IN UNIT 4] -->
-
-        <!-- headings
+        <!-- navbar
 
         Purpose:
-        - Main header section of the webpage
-        - Contains the title, subtitle, image, and key buttons for the webpage
+        - Navigation bar that allows users to jump to different sections of the webpage
+        - Also holds buttons for user settings (dark mode, reduce motion)
 
         When To Modify:
-        - [ ] Project 2 (REQUIRED FEATURE) 
-        - [ ] Project 3 (REQUIRED FEATURE) 
-        - [ ] Project 4 (REQUIRED FEATURE) 
-        - [ ] Any time after
+        - [ ] Project 4 (REQUIRED FEATURE)
+        - [ ] Project 5 (REQUIRED FEATURE) 
+        - [ ] Project 8 (STRETCH FEATURE) 
+        - [ ] Any time between / after
         -->
+
+        <div class="navbar">
+            <ul>
+            <li><a href="#header-img">Home</a></li>
+            <li><a href="#aboutEvent">About</a></li>
+            <li><a href="#eventSchedule">Schedule</a></li>
+            <li><a href="#rsvp">RSVP</a> </li>
+            <li><a href="#links">Links</a></li>
+            <li><button id="theme-button">Dark 🌙</button></li>
+            </ul>
+            
+            <!-- <div class="toggle-dark-mode" onclick="toggleDarkMode()">🌙</div> -->
+        </div>
 
         <!-- The following line of code is supposed to be for the header image. I'll reactivate it later, but I think the website looks cleaner without it -->
          
         <!-- <img id="header-img" src="img/Jollof PNG.png" alt="Cookout Header Image" style="width: 50px; height: auto;"/> 
         -->
 
-        <h1>Taste of Nigeria</h1>
-        <h3>Bring your tastebuds to life!</h3>
-        <button type="button">Buy tickets</button>
-        <button type="button">View the menu</button>
-        <button type="button">Contact Us</button>
+        <!-- Header Container -->
+        <div class="header-container">
+            <!-- Left section (Logo + Title) -->
+            <div class="header-item">
+                <img id="header-img" src="img/Jollof PNG.png" alt="Taste of Nigeria Logo">
+            </div>
 
-        
+
+
+            <!-- Right section (Buttons) -->
+            <div class="header-item">
+                <button class="header-button">Buy Tickets</button>
+                <button class="header-button">View Menu</button>
+                <button class="header-button">Contact Us</button>
+            </div>
+        </div>
+
+
+        <h1 id="title">Taste of Nigeria</h1>
+        <h3 id="tagline">Bring your tastebuds to life!</h3>
+  
         <!-- about
 
         Purpose:
@@ -161,23 +95,35 @@
         - [ ] Project 4 (STRETCH FEATURE) 
         - [ ] Any time between / after
         --> 
-        <h2>About the Event</h2>
+        <!-- About the Event Section -->
+         <!-- About Section -->
+         <div class="about-item">
+            <h2 id="aboutEvent">About the Event</h2>
+        </div>
+        
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/GlAAQxFGy-s" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/GlAAQxFGy-s" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen></iframe>
-
-        <p><span class="highlight">Join us for a vibrant Nigerian Cuisine Cookout</span>, a celebration of rich flavors, culture, and community! This event brings together food lovers to experience authentic Nigerian dishes, from jollof rice to suya, all freshly prepared by talented cooks. Whether you're Nigerian, a fan of African cuisine, or just curious to try something new, this cookout is for you. Come hungry, connect with great people, and enjoy an unforgettable taste of Nigeria!</p>
-
-        <h3>What to Expect</h3>
-        <h4><span class="highlight"> Great food, even greater people</span></h4>
-        <ul>
-            <li> <b>A culinary journey to Naija:</b><i> From smoky suya to fluffy moi moi, taste the best of Nigeria in one place.</i></li>
-            <li> <b>Jollof Wars:</b><i> Debate over the best jollof while stuffing your face with deliciousness.</i></li>
-            <li> <b>Surprise spice levels:</b><i> Some bites are mild, others might make you question your life choices—good luck!</i></li>
-        </ul>
+        <div class="about-content">
+            <div class="about-text">
+                <p><span class="highlight">Join us for a vibrant Nigerian Cuisine Cookout</span>, a celebration of rich flavors, culture, and community! This event brings together food lovers to experience authentic Nigerian dishes, from jollof rice to suya, all freshly prepared by talented cooks. Whether you're Nigerian, a fan of African cuisine, or just curious to try something new, this cookout is for you. Come hungry, connect with great people, and enjoy an unforgettable taste of Nigeria!</p>
+            </div>
+            <div class="about-expect">
+                <h2>What to Expect</h2>
+                <h4><span class="highlight">Great food, even greater people</span></h4>
+                <ul>
+                <li> <b>A culinary journey to Naija:</b> From smoky suya to fluffy moi moi, taste the best of Nigeria in one place.</li>
+                <li> <b>Jollof Wars:</b> Debate over the best jollof while stuffing your face with deliciousness.</li>
+                <li> <b>Surprise spice levels:</b> Some bites are mild, others might make you question your life choices—good luck!</li>
+                </ul>
+            </div>
+        </div>
 
         <!-- schedule
 
@@ -190,21 +136,89 @@
         - [ ] Project 4 (STRETCH FEATURE) 
         - [ ] Any time between / after
         --> 
-        <h2>Event Schedule</h2>
 
-        <img alt="Happy people at the cookout!" src="./img/istockphoto-1393304538-612x612.jpg" />
-        <h3><span class="highlight"> Socialize</span></h3>
+        <!-- Event Schedule Section -->
+        <h2 id="eventSchedule">Event Schedule</h2>
+
+        <div class="event-container">
             
-        <img alt="Beautifully diverse group of people in Nigerian attire" src="img/pexels-ilabappa-20434733.jpg" style="width: 550px; height: auto;"/>
+            <div class="event-item">
+                <h3><span class="highlight">Come prepared</span></h3>
+                <img id="crowd-img" alt="Happy people at the cookout!" src="./img/istockphoto-1393304538-612x612.jpg" />
+                <div class="event-text">
+                    <p>There's so much fun to be had; so much cruise to catch. What are you waiting for?</p>
+                </div>
+            </div>
 
-        <p>Make friends and discuss Nigerian culture.</p>
+            <div class="event-item">
+                <h3><span class="highlight">Socialize</span></h3>
+                <img alt="Beautifully diverse group of people in Nigerian attire" src="img/pexels-ilabappa-20434733.jpg" />
+                <div class="event-text">
+                    
+                    <p>Make friends and discuss Nigerian culture. You'll learn so much about our great nation.</p>
+                </div>
+            </div>
 
-        <h3><span class="highlight">Chop Life!</span></h3>
-        <p>Immerse yourself in our spread of expertly-curated, deliciously-prepared Nigerian food</p>
+            <div class="event-item">
+                <h3><span class="highlight">Chop Life!</span></h3>
+                <img id="plate-img" alt="Delicious plate of rice" src="./img/side-view-chicken-kebab-with-grilled-hot-green-pepper-tomato-pickled-cabbage-rice-pita-min.jpg" />
+                <div class="event-text">
+                    <p>Immerse yourself in our spread of expertly-curated, deliciously-prepared Nigerian food.</p>
+                </div>
+            </div>
+        </div>
 
-        <img alt="Delicious plate of rice" src="./img/side-view-chicken-kebab-with-grilled-hot-green-pepper-tomato-pickled-cabbage-rice-pita-min.jpg" style="width: 550px;"/>
 
-        <!-- rsvp [PLACEHOLDER] [ADDED IN UNIT 6] -->
+        <!-- rsvp
+
+        Purpose:
+        - Section for users to sign up for the event
+        - Contains a form for users to input their information, 
+        and a list of other users who have signed up
+
+        When To Modify:
+        - [ ] Project 6 (REQUIRED FEATURE) 
+        - [ ] Project 6 (STRETCH FEATURE) 
+        - [ ] Any time after
+        --> 
+        <div id="rsvp">
+            <h2>RSVP</h2>
+            <div class="rsvp-container">
+                <div class="rsvp-para">
+                    <p>Ready to join the ultimate celebration of Nigerian flavor and culture? RSVP now to secure your spot at the cookout! Whether you're coming for the jollof, the vibes, or the chance to connect with an amazing community, we can't wait to welcome you. Bring your appetite, your friends, and your best energy — this is an experience you won’t want to miss!</p>
+                </div>
+                
+                <div class="rsvp-participants">
+                    <p>🍛 Olu from Lagos has RSVP'd.</p>
+                    <p>🍛 Hamza from Kaduna has RSVP'd.</p>
+                    <p>🍛 Ebuka from Imo has RSVP'd.</p>
+                    <p id = "rsvp-count"><b>3</b> people have RSVP'd to this event.</p>
+                </div>
+            </div>
+
+            <!--- Sign RSVP Form --->
+            <div class="form-container">
+                <form id="rsvp-form" title="rsvp-form">
+                    <!-- form inputs go here -->
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+                    <label for="hometown">Hometown</label>
+                    <input type="text" id="hometown" name="hometown" placeholder="Where you're from" required>
+
+                    <!-- Submit button -->
+                    <button id="rsvp-button">Submit RSVP</button>
+                </form>
+
+                <p id="rsvp-success" style="display: none; color: #f8b91b; font-weight: bold;">Thank you for RSVPing!</p>
+
+                
+            </div>      
+        </div>
+
         <!-- success modal [PLACEHOLDER] [ADDED IN UNIT 9] --> 
 
         <!-- links
@@ -217,32 +231,38 @@
         - [ ] Project 4 (STRETCH FEATURE) 
         - [ ] Any time between / after
         --> 
-        <h2>Links</h2>
+        <h2 id="links">Links</h2>
 
+        <a class="block" href="https://www.reddit.com/r/Nigeria/" target="_blank">
+            <article>
+                <h3 class="link-titles" style="text-align: left;">Chat on Reddit</h3>
+                <p><span class="pretty-links">Connect with other Naija-lovers on r/Nigeria</span></p>
+            </article>
+        </a>
+        
         <!-- This <a> block is one link.  Copy and paste all 6 lines to create another link. -->
-        <a class="block" href="https://en.wikipedia.org/wiki/Nigerian_cuisine">
-            <article>
-                <h3 style="text-align: left;">Our Food</h3>
-                <p>Check out this Wikipedia article about Nigerian cuisine.</p>
-            </article>
-        </a>
+            <a class="block" href="https://en.wikipedia.org/wiki/Nigerian_cuisine" target="_blank">
+                <article>
+                    <h3 class="link-titles" style="text-align: left;">Our Food</h3>
+                    <p><span class="pretty-links">Check out this Wikipedia article about Nigerian cuisine.</span></p>
+                </article>
+            </a>
+    
 
-        <a class="block" href="https://www.reddit.com/r/Nigeria/">
+        <a class="block" href="https://sisijemimah.com/category/nigerian-food-2/" target="_blank">
             <article>
-                <h3 style="text-align: left;">Chat on Reddit</h3>
-                <p>Connect with other Naija-lovers on r/Nigeria</p>
-            </article>
-        </a>
-
-        <a class="block" href="https://sisijemimah.com/category/nigerian-food-2/">
-            <article>
-                <h3 style="text-align: left;">Try making the dishes</h3>
-                <p>Click here to find high-quality recipes for most of the food on our menu</p>
+                <h3 class="link-titles" style="text-align: left;">Try making the dishes</h3>
+                <p><span class="pretty-links">Click here to find high-quality recipes for most of the food on our menu</span></p>
             </article>
         </a>
             
         <!-- footer [PLACEHOLDER] [ADDED IN UNIT 3] -->
+         <!-- Footer Section -->
+         <footer class="fixed-footer">
+            <p id="footer-text">  &copy; 2025  Taste of Nigeria. All rights reserved.</p>
+        </footer>
         <!-- script [PLACEHOLDER] [ADDED IN UNIT 5] -->
+        <script src="index.js"></script>
 
     </body>
 </html>
