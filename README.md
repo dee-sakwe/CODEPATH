@@ -1,7 +1,7 @@
 # Welcome to CODEPATH!
 ![CodePath Logo](Images/idqJYfC3SG_logos.png)
 
-<p align="left"><br>This repository contains all the code I write during my CodePath classes, specifically for TIP 102 and WEB 101.<br><br>Technologies I use:</p>
+<p align="left"><br>This repository contains all the code I write during my CodePath classes, specifically for TIP 102 and WEB 101.<br><p>You can preview the website from WEB 101 at this <a href="https://lively-transforming-port-648.vscodeedu.app">link</a></p><br>Technologies I use:</p>
 
 ###
 
