@@ -51,6 +51,12 @@ input{
     margin: 10px 0;
 }
 
+label{
+    font-family: "Juana";
+    font-size: 18px;
+    color: #04724D;
+}
+
 /* Links */
 a, .pretty-links {
     text-align: left;
@@ -98,13 +104,60 @@ button:hover, .btn:hover {
 
 /* Sections */
 section {
-    background: #f6f0e5;
+    background: #f3eadb;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    max-width: 1200px;
 }
+
+/* Tighten up the main heading */
+.links-section > h2 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Grid layout for the cards */
+  .links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Reset default margins on your mini‑headings and paragraphs */
+  .link-card .link-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    color: #04724D;
+  }
+  
+  .link-card .link-description {
+    margin: 0;
+    font-size: 1rem;
+    color: #2d3436;
+  }
+  
+  /* Make each link look like a card */
+  .link-card {
+    display: block;
+    background: #f6f0e5;
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  
+  /* Hover lift effect */
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Ensure links use your existing accent color */
+  .link-card .link-title,
+  .link-card .link-description {
+    color: inherit;
+  }
 
 /* Header */
 .header-container {
@@ -237,8 +290,6 @@ section {
     text-decoration: none;
 }
 
-
-
 /* Flexbox Layout */
 .about-content {
     display: flex;
@@ -282,7 +333,7 @@ section {
     background: #f3eadb; /* Light warm background */
     padding: 15px; /* Adds spacing inside the box */
     border-radius: 12px; /* Rounded edges */
-    box-shadow: 2px 5px 40px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 2px 5px 40px rgba(0, 0, 0, 0.07); /* Soft shadow for depth */
     text-align: center;
     transition: transform 0.3s ease-in-out;
 }
@@ -366,6 +417,7 @@ section {
 
 .rsvp-container {
     display: flex;
+    padding-top: 20px;
     flex-direction: row;
     gap: 20px;
     width: 100%;
@@ -400,9 +452,22 @@ section {
     border-radius: 5px;
 }
 
+/* Apply Raleway to all form inputs, textareas, and buttons */
+#rsvp-form input,
+#rsvp-form textarea{
+  font-family: 'Raleway', sans-serif;
+}
+
+/* (Optional) Make the placeholder text match, too */
+#rsvp-form input::placeholder,
+#rsvp-form textarea::placeholder {
+  font-family: 'Raleway', sans-serif;
+  opacity: 0.7; /* you can tweak this */
+}
+
 #rsvp-button{
     font-size: 17px;
-    padding: 9px 10px;
+    padding: 10px 10px;
     margin: 5px;
     border: 1px solid transparent;
     border-radius: 50px;
@@ -412,9 +477,9 @@ section {
 }
 
 #rsvp-button:hover{
-    color: #f1e5cf;
+    color: #04724D;
     /* color: white; */
-    background-color: #208463; 
+    background-color: #f1e5cf; 
     /* background-color: #04724D; */
     transform: scale(1.05);
 }
@@ -458,8 +523,146 @@ section {
     }
 }
 
-/*** Animations [PLACEHOLDER] [ADDED IN UNIT 8] ***/
-/*** Success Modal [PLACEHOLDER] [ADDED IN UNIT 9] ***/
+/*** Success Modal  ***
+  
+  Purpose:
+  - Add style rules to your website's pop-up modal, which appears
+    when a user successfully submits the RSVP form
+
+  When To Modify:
+  - [ ] Project 9 (REQUIRED FEATURE)
+  - [ ] Any time after
+***/
+
+.modal{
+    display: none;   /* modal should be hidden by default*/
+    position: fixed; /* modal cannot move around the screen */
+    z-index: 2;      /* modal appears above other elements */ 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* Add a semi-transparent background to shadow non-modal elements*/
+    background-color: rgba(0,0,0,0.6); /* 40% opacity black */
+    /* Flexbox settings for modal */
+    /* These won't apply until we update "display:" from "hidden" to "flex" in our JS */
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Utility class to show the modal */
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+  
+.modal-container {
+    /* Change modal size and spacing here */
+    padding: 20px;
+    width: auto;
+    max-width: 60%;
+    margin: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #f8b91b;
+    color: #1a1f36;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Raleway";
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+#modal-image {
+    width: 100%;
+    max-width: 300px;   /* never larger than 300px */
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    /* animation rules */
+    animation: pulse 2s infinite alternate ease-in-out;
+    transform-origin: center center;
+}
+
+/* close button styling */
+.modal-actions {
+    margin-top: 20px;
+}
+
+.modal-close {
+    background: #04724D;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    flex-shrink: 1;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #f1e5cf;
+    color: #04724D;
+}
+  
+.modal-item {
+    margin: 10px 0;
+}
+
+/* Slide-down animation for the container */
+@keyframes slideDown {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+
+/* Keyframes for the pulsing scale */
+@keyframes pulse {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.08);
+    }
+}
+
+
+/* 1. Prepare sections for scroll animation */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out,
+                transform 0.6s ease-out;
+}
+  
+/* 2. When in view, reset to normal */
+.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+  
+/* 3. If user has reduced motion, disable these */
+.reduce-motion .scroll-animate,
+.reduce-motion .in-view {
+opacity: 1 !important;
+transform: none !important;
+transition: none !important;
+}
+  
+
 /* Default dark mode style */
 .dark-mode {
     background: linear-gradient(to bottom, #1a1a2e, #16213e);
@@ -469,7 +672,6 @@ section {
 .dark-mode html {
     background: linear-gradient(to bottom, #1a1a2e, #16213e);
 }
-
 
 /* Example: Different dark mode style for h1 */
 .dark-mode h1, 
@@ -493,9 +695,23 @@ section {
     color: #d3d3d3;
 }
 
+.dark-mode label{
+    font-family: "Juana";
+    font-size: 18px;
+    color: var(--accent-color-green);
+}
+
 /* Navbar */
 .dark-mode .navbar {
     background-color: var(--accent-color-darkest);
+}
+
+.dark-mode #reduce-motion-button{
+    background-color: var(--accent-color-darkest);
+}
+
+.dark-mode #reduce-motion-button:hover{
+    background-color: var(--accent-color-medium);
 }
 
 .dark-mode .navbar ul li a {
@@ -504,12 +720,6 @@ section {
 
 .dark-mode .navbar ul li a:hover {
     color: var(--accent-color-green)
-}
-
-/* Sections */
-.dark-mode section {
-    background: #222;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
 }
 
 /* Links */
@@ -524,14 +734,15 @@ section {
 }
 
 .dark-mode button, 
-.dark-mode .btn{
+.dark-mode .btn,
+.dark-mode #rsvp-button{
     background-color: var(--accent-color-dark);
     color: white;
 }
 
 .dark-mode button:hover, 
 .dark-mode .btn:hover,
-.dark-mode #rsvp-button  {
+.dark-mode #rsvp-button:hover{
     background-color: var(--accent-color-medium);
     color: var(--accent-color-green);
 }
@@ -548,6 +759,38 @@ section {
     background: var(--card-bg-dark-mode);
     /* border: 1px solid var(--border-dark-mode); */
     box-shadow: 2px 5px 40px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .links-section{
+    background-color: #16213e;
+}
+
+ /* Grid layout for the cards */
+.dark-mode .links-container {
+    background-color: #16213e;
+  }
+  
+
+  .link-card .link-description {
+    margin: 0;
+    font-size: 1rem;
+    color: #2d3436;
+  }
+  
+  /* Make each link look like a card */
+.dark-mode .link-card {
+    background: #1b284b;
+  }
+  
+  /* Ensure links use your existing accent color */
+ .dark-mode .link-card .link-title,
+ .dark-mode .link-card .link-description {
+    color: inherit;
+  }
+
+.dark-mode .modal-container{
+    background-color: var(--bg-color-dark-mode);
+    /* color: #1a1f36; */
 }
 
 /* Footer */
@@ -581,14 +824,6 @@ section {
     transform: scale(1.07); /* Slight zoom effect */
     filter: brightness(1.1); /* Slight brightening */
 }
-
-
-/* Customize Dark Mode Theme
-.dark-mode {
-
-
-}
-*/
 
 /*** Custom Colors (OPTIONAL) ***
   

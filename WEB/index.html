@@ -51,6 +51,8 @@
             <li><a href="#eventSchedule">Schedule</a></li>
             <li><a href="#rsvp">RSVP</a> </li>
             <li><a href="#links">Links</a></li>
+
+            <li><button id="reduce-motion-button" class="header-button">Reduce Motion</button></li>
             <li><button id="theme-button">Dark 🌙</button></li>
             </ul>
             
@@ -215,46 +217,55 @@
 
                 <p id="rsvp-success" style="display: none; color: #f8b91b; font-weight: bold;">Thank you for RSVPing!</p>
 
-                
             </div>      
         </div>
 
-        <!-- success modal [PLACEHOLDER] [ADDED IN UNIT 9] --> 
-
-        <!-- links
+        <!-- success modal
 
         Purpose:
-        - Links to other resources related to the event
+        - Modal that appears when a user successfully signs up for the event
+        - Contains a personalized message and image
 
         When To Modify:
-        - [ ] Project 2 (STRETCH FEATURE) 
-        - [ ] Project 4 (STRETCH FEATURE) 
-        - [ ] Any time between / after
+        - [ ] Project 9 (REQUIRED FEATURE)
+        - [ ] Project 9 (STRETCH FEATURE) 
+        - [ ] Any time after
         --> 
-        <h2 id="links">Links</h2>
 
-        <a class="block" href="https://www.reddit.com/r/Nigeria/" target="_blank">
-            <article>
-                <h3 class="link-titles" style="text-align: left;">Chat on Reddit</h3>
-                <p><span class="pretty-links">Connect with other Naija-lovers on r/Nigeria</span></p>
-            </article>
-        </a>
-        
-        <!-- This <a> block is one link.  Copy and paste all 6 lines to create another link. -->
-            <a class="block" href="https://en.wikipedia.org/wiki/Nigerian_cuisine" target="_blank">
-                <article>
-                    <h3 class="link-titles" style="text-align: left;">Our Food</h3>
-                    <p><span class="pretty-links">Check out this Wikipedia article about Nigerian cuisine.</span></p>
-                </article>
-            </a>
-    
+        <!-- -->
 
-        <a class="block" href="https://sisijemimah.com/category/nigerian-food-2/" target="_blank">
-            <article>
-                <h3 class="link-titles" style="text-align: left;">Try making the dishes</h3>
-                <p><span class="pretty-links">Click here to find high-quality recipes for most of the food on our menu</span></p>
-            </article>
-        </a>
+        <div id="success-modal" class="modal">
+            <div class="modal-container">
+                <div class="modal-item" id="modal-text">
+                    <p>🎉 Thanks for RSVPing! We can't wait to see you at the cookout!</p>
+                </div>
+                <div id="modal-item">
+                    <img id="modal-image" src="img/modal-image.png" alt="Smiling Nigerian woman with jollof rice">
+                </div>
+                <div class="modal-actions">
+                    <button id="modal-close" class="modal-close">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- links --> 
+        <section id="links" class="links-section">
+            <h2>Links</h2>
+            <div class="links-container">
+              <a class="link-card" href="https://www.reddit.com/r/Nigeria/" target="_blank">
+                <h3 class="link-title">Chat on Reddit</h3>
+                <p class="link-description">Connect with other Naija‑lovers on r/Nigeria</p>
+              </a>
+              <a class="link-card" href="https://en.wikipedia.org/wiki/Nigerian_cuisine" target="_blank">
+                <h3 class="link-title">Our Food</h3>
+                <p class="link-description">Check out this Wikipedia article about Nigerian cuisine.</p>
+              </a>
+              <a class="link-card" href="https://sisijemimah.com/category/nigerian-food-2/" target="_blank">
+                <h3 class="link-title">Try making the dishes</h3>
+                <p class="link-description">Find high‑quality recipes for most of the food on our menu.</p>
+              </a>
+            </div>
+          </section>
             
         <!-- footer [PLACEHOLDER] [ADDED IN UNIT 3] -->
          <!-- Footer Section -->
